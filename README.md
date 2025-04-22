@@ -130,11 +130,11 @@ curl --location 'https://you.sign3.in/v1/uan_basic' \
 | `uan_basic_details.user_exist`                | bool      | Bool indicating if UAN exists for provided input                    |
 | `uan_basic_details.uan_list`                  | list      | Array containing all found UAN (string) for given input.    |
 | `uan_basic_details.summary`                   | dict      | Final result with current employer details and employee   |
-| `.summary.matching_uan`                       | string    | UAN with respect to summary is fetched |
-| `.summary.is_employed`                        | bool      | true / false (employee hasn’t exited from the company then true also employee PF filing is found in the latest 3 months else false)|
-| `.summary.uan_count`                          | int       | count of UAN numbers found |
-| `.summary.date_of_exit_marked`                | bool      | if date of exit is marked or not |
-| `.summary.recent_employer_data`               | dict      | Recent employer data like name, establishment id and confidence score              |
+| `uan_basic_details.summary.matching_uan`                       | string    | UAN with respect to summary is fetched |
+| `uan_basic_details.summary.is_employed`                        | bool      | true / false (employee hasn’t exited from the company then true also employee PF filing is found in the latest 3 months else false)|
+| `uan_basic_details.summary.uan_count`                          | int       | count of UAN numbers found |
+| `uan_basic_details.summary.date_of_exit_marked`                | bool      | if date of exit is marked or not |
+| `uan_basic_details.summary.recent_employer_data`               | dict      | Recent employer data like name, establishment id and confidence score              |
 | `$..recent_employer_data.establishment_id`    | string    | Establishment ID of the current organization             |
 | `$..recent_employer_data.establishment_name ` | string    | Name of the establishment linked with member id of the customer               |
 | `$..recent_employer_data.date_of_exit`        | string    | yyyy-mm-dd date of exit from the company |
