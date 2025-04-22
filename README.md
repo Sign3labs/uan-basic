@@ -1,4 +1,4 @@
-# uan-basic
+# UAN Basic
 This document outlines how to integrate with the UAN Basic API provided by Sign3. The API accepts PAN / Mobile and returns various details for UAN (Employment) related to given PAN / Mobile.
 
 ---
@@ -123,42 +123,42 @@ curl --location 'https://you.sign3.in/v1/uan_basic' \
 
 ### Response Field Details
 
-| Field                               | Type      | Description                                       |
-|-------------------------------------|---------- |---------------------------------------------------|
-| `request_id`                        | string    | Unique identifier for the API request             |
-| `uan_basic_details`                 | dict      | contains all UAN details for provided input     |
-| `.user_exist`                       | bool      | Bool indicating if UAN exists for provided input                    |
-| `.uan_list`                         | list      | Array containing all found UAN (string) for given input.    |
-| `.summary`                          | dict      | Final result with current employer details and employee   |
-| `..matching_uan`                    | string    | UAN with respect to summary is fetched |
-| `..is_employed`                     | bool      | true / false (employee hasn’t exited from the company then true also employee PF filing is found in the latest 3 months else false)|
-| `..uan_count`                       | int       | count of UAN numbers found |
-| `..date_of_exit_marked`             | bool      | if date of exit is marked or not |
-| `..recent_employer_data`            | dict      | Recent employer data like name, establishment id and confidence score              |
-| `...establishment_id`               | string    | Establishment ID of the current organization             |
-| `...establishment_name `            | string    | Name of the establishment linked with member id of the customer               |
-| `...date_of_exit`                   | string    | yyyy-mm-dd date of exit from the company |
-| `...date_of_joining`                | string    | yyyy-mm-dd date of joining with the employer |
-| `...matching_uan`                   | string    | matching UAN with recent employer |
-| `...member_id`                      | string    | Member id of the employee in the related establishment    |
-| `..uan_details`                     | dict      | Dictionary with UAN in the key and user details linked with that UAN number              |
-| `...{<uan_number>}`                 | dict      | Dictionary with user details linked              |
-| `....basic_details`                 | dict      | Dictionary consisting basic details linked to UAN number              |
-| `.....gender`                       | string    | M/F/T gender of the user M - Male F - Female T - Third gender              |
-| `.....date_of_birth`                | string    | yyyy-mm-dd date of birth of the user         |
-| `.....name`                         | string    | Name of the user linked with UAN         |
-| `.....aadhaar_verification_status`  | int       | -1 aadhaar verification status of the employee(user) -1 - No data found        |
-| `.....mobile`                       | string    | Mobile number linked with UAN Note: Currently the Mobile number linked with the UAN is not provided by the Source and hence it is given as an empty string. It will become available once the source makes it available.         |
-| `....employment_details`            | dict      | Consists details of the employer like establishment_name,establishment_id,member_id      |
-| `.....member_id`                    | string      | Member id of the employee in the related establishment     |
-| `.....establishment_id`             | string      | Establishment ID of the current organization     |
-| `.....date_of_exit`                 | string      | yyyy-mm-dd date of exit from the company     |
-| `.....date_of_joining`              | string      | yyyy-mm-dd date of joining with the employer     |
-| `.....leave_reason`                 | string      | Leave reason marked by the employer     |
-| `.....establishment_name`           | string      | Name of the establishment linked with member id of the customer     |
-| `..uan_source`                      | list        | List of dictionaries with the UAN number source explaining from which source the linked UAN number is found.       |
-| `...{uan}`                          | string      | UAN linked with the source       |
-| `...{source}`                       | string      | Source of the UAN number   |
+| Field                                         | Type      | Description                                       |
+|-----------------------------------------------|---------- |---------------------------------------------------|
+| `request_id`                                  | string    | Unique identifier for the API request             |
+| `uan_basic_details`                           | dict      | contains all UAN details for provided input     |
+| `uan_basic_details.user_exist`                | bool      | Bool indicating if UAN exists for provided input                    |
+| `uan_basic_details.uan_list`                  | list      | Array containing all found UAN (string) for given input.    |
+| `uan_basic_details.summary`                   | dict      | Final result with current employer details and employee   |
+| `.summary.matching_uan`                       | string    | UAN with respect to summary is fetched |
+| `.summary.is_employed`                        | bool      | true / false (employee hasn’t exited from the company then true also employee PF filing is found in the latest 3 months else false)|
+| `.summary.uan_count`                          | int       | count of UAN numbers found |
+| `.summary.date_of_exit_marked`                | bool      | if date of exit is marked or not |
+| `.summary.recent_employer_data`               | dict      | Recent employer data like name, establishment id and confidence score              |
+| `$..recent_employer_data.establishment_id`    | string    | Establishment ID of the current organization             |
+| `$..recent_employer_data.establishment_name ` | string    | Name of the establishment linked with member id of the customer               |
+| `$..recent_employer_data.date_of_exit`        | string    | yyyy-mm-dd date of exit from the company |
+| `$..recent_employer_data.date_of_joining`     | string    | yyyy-mm-dd date of joining with the employer |
+| `$..recent_employer_data.matching_uan`        | string    | matching UAN with recent employer |
+| `$..recent_employer_data.member_id`           | string    | Member id of the employee in the related establishment    |
+| `uan_basic_details.uan_details`               | dict      | Dictionary with UAN in the key and user details linked with that UAN number              |
+| `$..uan_details.{<uan_number>}`               | dict      | Dictionary with user details linked              |
+| `$..{<uan_number>}.basic_details`             | dict      | Dictionary consisting basic details linked to UAN number              |
+| `$..basic_details.gender`                     | string    | M/F/T gender of the user M - Male F - Female T - Third gender              |
+| `$..basic_details.date_of_birth`              | string    | yyyy-mm-dd date of birth of the user         |
+| `$..basic_details.name`                       | string    | Name of the user linked with UAN         |
+| `$..basic_details.aadhaar_verification_status`| int       | -1 aadhaar verification status of the employee(user) -1 - No data found        |
+| `$..basic_details.mobile`                     | string    | Mobile number linked with UAN Note: Currently the Mobile number linked with the UAN is not provided by the Source and hence it is given as an empty string. It will become available once the source makes it available.         |
+| `$..{<uan_number>}.employment_details`        | dict      | Consists details of the employer like establishment_name,establishment_id,member_id      |
+| `$..employment_details.member_id`             | string      | Member id of the employee in the related establishment     |
+| `$..employment_details.establishment_id`      | string      | Establishment ID of the current organization     |
+| `$..employment_details.date_of_exit`          | string      | yyyy-mm-dd date of exit from the company     |
+| `$..employment_details.date_of_joining`       | string      | yyyy-mm-dd date of joining with the employer     |
+| `$..employment_details.leave_reason`          | string      | Leave reason marked by the employer     |
+| `$..employment_details.establishment_name`    | string      | Name of the establishment linked with member id of the customer     |
+| `uan_basic_details.uan_source`                | list        | List of dictionaries with the UAN number source explaining from which source the linked UAN number is found.       |
+| `$..uan_source.{uan}`                         | string      | UAN linked with the source       |
+| `$..uan_source.{source}`                      | string      | Source of the UAN number   |
 
 ---
 
