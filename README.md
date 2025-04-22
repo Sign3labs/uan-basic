@@ -143,7 +143,7 @@ curl --location 'https://you.sign3.in/v1/uan_basic' \
 | `$..recent_employer_data.member_id`           | string    | Member id of the employee in the related establishment    |
 | `uan_basic_details.uan_details`               | dict      | Dictionary with UAN in the key and user details linked with that UAN number              |
 | `$..uan_details.{<uan_number>}`               | dict      | Dictionary with user details linked              |
-| `$..{<uan_number>}.basic_details`             | dict      | Dictionary consisting basic details linked to UAN number              |
+| `$..{<uan_number>}.basic_details`             | dict      | Dictionary consisting basic details of user linked to UAN number              |
 | `$..basic_details.gender`                     | string    | M/F/T gender of the user M - Male F - Female T - Third gender              |
 | `$..basic_details.date_of_birth`              | string    | yyyy-mm-dd date of birth of the user         |
 | `$..basic_details.name`                       | string    | Name of the user linked with UAN         |
